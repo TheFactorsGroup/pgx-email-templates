@@ -1,0 +1,126 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <!-- http://rmion.com/responsive-html-email/ -->
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="format-detection" content="telephone=no">
+  <title>Responsive HTML Email Template</title>
+  <style type="text/css">
+    /* /\/\/\/\/\/\/\/\/ RESET STYLES /\/\/\/\/\/\/\/\/ */
+    /*body{margin:0;padding:0;}*/
+    body, .bodyCell, #bodyTable{height:100% !important;margin:0;padding:0;width:100% !important;}
+    table, td{border-collapse:collapse; border-spacing: 0;}
+    img, a img{border:0 none;height:auto;line-height:100%;outline:none;text-decoration:none;}
+    .imageFix{display:block;}
+    h1,h2,h3,h4,h5,h6 { margin: 0; padding: 0;}
+    
+    /* Email Client Specific Overrides */
+    /* Hotmail/Outlook.com */
+    /* Force display emails at full width */
+    .ReadMsgBody { width: 100%;}, .ExternalClass{width:100%;} 
+    /* Force display line-heights normally */
+    .ExternalClass, .ExternalClass p, .ExternalClass span,.ExternalClass font,.ExternalClass td,.ExternalClass div{line-height: 100%;}
+    
+    /* Outlook Desktop */
+    #outlook a{padding:0;} /* Force Outlook 2007 and up to provide a "view in browser" message */
+    table, td{mso-table-lspace:0pt;mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 & up */
+    img{-ms-interpolation-mode:bicubic;} /* Force IE to smoothly render resized images. */
+    body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;} /* Prevent Windows and Webkit-based mobile platforms from changing declared text sizes */
+
+    /* Media Query Fix for iOS */
+    @media only screen and (min-device-width: 541px), screen and (min-width: 541px) { .content {width: 540px !important;}}
+
+    /* Email styles */
+    h1,h2,h3,h4,h5,h6, #headerContainer a  { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
+    h1,h2,h3,h4,h5,h6,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{
+      color: #e2136b !important
+;    }
+    h1, h1 a { font-size: 44px; font-weight: 100; line-height: 115%; text-align: left; }
+    h2, h2 a { font-size: 34px; font-weight: 100; line-height: 100%; text-align: left; }
+    h3, h3 a { font-size: 30px; font-weight: 100; line-height: 115%; text-align: left; }
+
+    body, #bodyTable { background-color: #ffffff;}
+    #emailContainer { width: %100; }
+    #headerContainer, #introContainer, #mainArticleContainer, #newsContainer, #otherArticlesContainer, #footerContainer {
+      padding: 20px;
+    }
+    #mainArticleContainer { background-color: #edefef; }
+    #headerContainer { background-color: #e2136b; }
+    #headerContainer a { color: #ffffff; text-decoration: none; margin-right: 10px; }
+
+  </style>
+</head>
+<body>
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" id="bodyTable">
+    <!--New Content Block Wrapper Row-->
+    <tr>
+      <td align="center" valign="top" class="bodyCell">
+      <!-- // BEGIN EMAIL -->
+        <table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%" id="emailContainer">
+          <tr>
+            <td align="center" valign="top" class="containerCell">
+              <!--[if (gte mso 9)|(IE)]>
+              <table width="540" align="center" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td>
+                    <![endif]-->
+                    
+                    <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" class="mainContentTable">
+                      <tr>
+                        <td align="center" valign="top" id="headerContainer">
+<!-- CONTENT FROM MODULE HERE -->
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td align="center" valign="top" id="introContainer">
+<!-- CONTENT FROM MODULE HERE -->
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td align="center" valign="top" id="mainArticleContainer">
+<!-- CONTENT FROM MODULE HERE -->
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td align="center" valign="top" id="newsContainer">
+<!-- CONTENT FROM MODULE HERE -->
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td align="center" valign="top" id="otherArticlesContainer">
+<!-- CONTENT FROM MODULE HERE -->
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td align="center" valign="top" id="footerContainer">
+<!-- CONTENT FROM MODULE HERE -->
+                        </td>
+                      </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                  </td>
+                </tr>
+              </table>
+              <![endif]-->
+            </td>
+          </tr>
+        </table> <!-- // END EMAIL -->
+      </td> <!-- END of .bodyCell -->
+    </tr>
+    
+    <!--End New Content Block Wrapper Row-->
+
+  </table> <!-- END #bodyTable -->
+  </center>
+</body>
+</html>
