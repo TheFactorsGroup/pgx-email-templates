@@ -1,5 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
@@ -12,6 +11,7 @@
   <style type="text/css">
     /* /\/\/\/\/\/\/\/\/ RESET STYLES /\/\/\/\/\/\/\/\/ */
     /*body{margin:0;padding:0;}*/
+    
     body, .bodyCell, #bodyTable{height:100% !important;margin:0;padding:0;width:100% !important; font-size: 13px;}
     table, td{border-collapse:collapse; border-spacing: 0;}
     img, a img{border:0 none;height:auto;line-height:100%;outline:none;text-decoration:none;}
@@ -77,23 +77,29 @@
     .header-menu, .intro-content, .mainArticle-content, .newsItem-content, .articles-content, .footer-legal{
       vertical-align: top;
       color: #656565;
+      /*outline: 1px dotted orange;*/
+    }
+    td {
+      /*outline: 1px dotted pink;*/
     }
 
     .intro-content { padding: 0px; }
-    .mainArticle-image { width: 50%; }
-    .mainArticle-image img {
+    .mainArticle-imageTable { width: 50%; }
+    .mainArticle-image {
       width: 100%;
     }
-    .mainArticle-content { 
+    .mainArticle-contentTable { 
       width: 50%;
-      padding: 0 0 0 15px;
+    }
+    .mainArticle-content {
+      padding-left: 15px;
     }
     .newsItem-block {
       /*width: 50%;*/
     }
     .newsItem-content { padding: 0 10px; }
-    .articles-image { width: 50%; }
-    .articles-img { width: 100%; }
+    .articles-imageBlock,
+    .articles-image { width: 100%; display: block;}
     .articles-content { padding: 0 10px; }
     
     .footer-logo, .footer-legal, .footer-social {
@@ -101,14 +107,32 @@
       color: #8c8c8c;
     }
 
-    /* Media Query Fix for iOS */
+    /* Media Query Fix for iOS
     @media only screen and (min-device-width: 541px), screen and (min-width: 541px) { 
       .content {width: 540px !important;}
+    }*/
+    .button {
+      font-size: 16px; 
+      color: #ffffff; 
+      text-decoration: none; 
+      background-color: #e2136b; 
+      border-top: 15px solid #e2136b; 
+      border-bottom: 15px solid #e2136b; 
+      border-left: 25px solid #e2136b; 
+      border-right: 25px solid #e2136b; 
+      border-radius: 3px; 
+      -webkit-border-radius: 3px; 
+      -moz-border-radius: 3px; 
+      display: inline-block;
     }
 
-
     /* ///// MOBILE STYLES //////// */
-    @media only screen and (max-width : 480px){
+    @media screen and (max-width : 480px){
+      /* USE THESE CLASSES TO HIDE CONTENT ON MOBILE */
+      td[class="mobile-hide"],td[class="newsItem-image"]{
+        display:none;
+      }
+
       /* ///// RESET STYLES //////// */
       td[id='headerContainer'],
       td[id='introContainer'],
@@ -117,10 +141,21 @@
       td[id='otherArticlesContainer'],
       td[id='footerContainer']{
         max-width: 480px !important; width: 100% !important;
+        padding: 10px;
+      }
+      td[class='containerCell']{
+        padding: 10px;
+      }
+
+      /* FULL-WIDTH TABLES */
+      table[class="responsive-table"]{
+        width:100% !important;
       }
       table[class='newsItem-block']{
-        width: 100% !important;
+        width: 100%!important;
       }
+
+
       body {width:100% !important; min-width: 100% !important;} /* Force iOS to render at full width */
       
       /* /////// General Styles //////// */
@@ -129,12 +164,27 @@
       h3 { font-size: 16px !important;}
       
       img[class='mainArticle-img']{height: auto !important; max-width: 480px !important; width: 100% !important;}
-      
-      td[class='mainArticle-image'], td[class='mainArticle-content'],
-      td[class='articles-image'], td[class='articles-content'] { 
-        display: block !important; width: 100% !important;
+      tbody, td, tr {
+        width: 100% !important;
       }
-      img[class='articles-img'] { width: 100% !important;}
+      table[class='mainArticle-imageTable'], table[class='mainArticle-contentTable'],
+      table[class='articles-imageTable'], table[class='articles-contentTable'] {
+        display: block !important; 
+        width: 100% !important; 
+      }
+      td[class='mainArticle-content'] {padding: 15px 0 !important;}
+      img[class='articles-image'] { width: 100% !important;}
+      img[class='mainArticle-img'] { width: 100% !important;}
+
+
+      a[class="button"]{
+          width:100% !important;
+          padding: 15px 0 !important;
+          border: 0 !important;
+          font-size: 16px !important;
+          text-align: center;
+      }
+
 
     }
 
@@ -160,7 +210,7 @@
                       <tr>
                         <td align="center" valign="top" id="headerContainer">
 <!-- // START HEADER -->
-<table width="100%" class='header-block block'>
+<table width="100%" class='header-block'>
   <tr>
     <td class="header-logo">
     <a href="http://pgx.com" target="_blank" title="pgx.com"><img src='http://www.pgx.com/wp-content/uploads/sites/4/2013/12/logo.png' width="200" height="100" alt="pgx.com" /></a>
@@ -202,19 +252,26 @@
                       <tr>
                         <td align="center" valign="top" id="mainArticleContainer">
 <!-- MAIN ARTICLE BLOCK -->
-<table width="100%" class="mainArticle-block block">
-  <tr>
-    <td class="mainArticle-image">
-      <img class="mainArticle-img" width="400" height="300" src='http://lorempixel.com/400/300/people' alt='Main article headline' title="Main article headline" />
-    </td>
-    <td class="mainArticle-content">
-      <h2>Main article headline goes here.</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore itaque aliquam obcaecati! Officiis, earum, sequi aliquid maxime vitae soluta dicta pariatur quas molestias excepturi architecto tenetur necessitatibus ullam assumenda inventore?</p>
-      <p>Quae, officia, in, dolorum repudiandae assumenda eius tempore numquam saepe aut nemo earum eaque ut est ratione atque </p>
-      <a href="#TODO#" class="button button-cta">CTA on subject</a>
-    </td>
-  </tr>
-</table>
+
+    <table class="mainArticle-imageTable" align="left" width="45%">
+      <tr>
+        <td>
+          <img class="mainArticle-image" width="400" height="300" src='http://lorempixel.com/400/300/people' alt='Main article headline' title="Main article headline" />
+        </td>
+      </tr>
+    </table>
+
+    
+    <table class="mainArticle-contentTable" align="right" width="45%">
+      <tr>
+        <td class="mainArticle-content">
+          <h2>Main article headline goes here.</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore itaque aliquam obcaecati! Officiis, earum, sequi aliquid maxime vitae soluta dicta pariatur quas molestias excepturi architecto tenetur necessitatibus ullam assumenda inventore?</p>
+          <p>Quae, officia, in, dolorum repudiandae assumenda eius tempore numquam saepe aut nemo earum eaque ut est ratione atque </p>
+          <a href="#TODO#" class="button">CTA on subject</a>          
+        </td>
+      </tr>
+    </table>
 <!-- END MAIN ARTICLE BLOCK -->
 
                         </td>
@@ -223,52 +280,39 @@
                       <tr>
                         <td align="center" valign="top" id="newsContainer">
 <!-- NEWS BLOCK -->
-      <h2>In the news</h2>
-<table width="50%" class="newsItem-block block" align="left">
+<h2>In the news</h2>
+<table width="49%" class="newsItem-block" align="left">
   <tr>
-    <td>
-      <table>
-        <tr>
-          <td class="newsItem-image"><img src="http://lorempixel.com/75/75/food/1/News 1/" alt="news 1" width="75" /></td>
-          <td class="newsItem-content">
-             <h3><a href='#link-to-article'>Study shows diabetes link to Glucomannan</a></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed quam ut velit elementum sagittis id id enim.</p>
-          </td>
-        </tr>
-        <tr>
-          <td class="newsItem-image"><img src="http://lorempixel.com/75/75/food/2/News 2/" alt="news 2" width="75" /></td>
-          <td class="newsItem-content">
-             <h3><a href='#link-to-article'>Scientists lament loss of self-control</a></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed quam ut velit elementum sagittis id id enim.</p>
-          </td>
-        </tr>
-      </table>
-
+    <td class="newsItem-image"><img src="http://lorempixel.com/75/75/food/1/News 1/" alt="news 1" width="75" /></td>
+    <td class="newsItem-content">
+       <h3><a href='#link-to-article'>Study shows diabetes link to Glucomannan</a></h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed quam ut velit elementum sagittis id id enim.</p>
+    </td>
+  </tr>
+  <tr>
+    <td class="newsItem-image"><img src="http://lorempixel.com/75/75/food/2/News 2/" alt="news 2" width="75" /></td>
+    <td class="newsItem-content">
+       <h3><a href='#link-to-article'>Scientists lament loss of self-control</a></h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed quam ut velit elementum sagittis id id enim.</p>
     </td>
   </tr>
   </table>
 
-  <table width="50%" class="newsItem-block block" align="left">
-  <tr>
-    <td >
-      <table>
-        <tr>
-          <td class="newsItem-image"><img src="http://lorempixel.com/75/75/food/3/News 3/" alt="news 1" width="75" /></td>
-          <td class="newsItem-content">
-             <h3><a href='#link-to-article'>How chocolate helps you lose weight</a></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed quam ut velit elementum sagittis id id enim.</p>
-          </td>
-        </tr>
-        <tr>
-          <td class="newsItem-image"><img src="http://lorempixel.com/75/75/food/4/News 4/" alt="news 2" width="75" /></td>
-          <td class="newsItem-content">
-             <h3><a href='#link-to-article'>What you can learn from green tea</a></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed quam ut velit elementum sagittis id id enim.</p>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+  <table width="49%" class="newsItem-block" align="right">
+    <tr>
+      <td class="newsItem-image"><img src="http://lorempixel.com/75/75/food/3/News 3/" alt="news 1" width="75" /></td>
+      <td class="newsItem-content">
+         <h3><a href='#link-to-article'>How chocolate helps you lose weight</a></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed quam ut velit elementum sagittis id id enim.</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="newsItem-image"><img src="http://lorempixel.com/75/75/food/4/News 4/" alt="news 2" width="75" /></td>
+      <td class="newsItem-content">
+         <h3><a href='#link-to-article'>What you can learn from green tea</a></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed quam ut velit elementum sagittis id id enim.</p>
+      </td>
+    </tr>
 </table>
 
 <!-- END NEWS BLOCK -->
@@ -279,41 +323,77 @@
                       <tr>
                         <td align="center" valign="top" id="articlesContainer">
 <!-- OTHER ARTICLES BLOCK -->
-<table width="100%" class="block articles-block">
+<table width="100%" class="articles-block">
   <tr>
-    <td class="articles-image">
-      <img  class='articles-img' width="350" src="http://lorempixel.com/350/175/people/FITNESS/" alt="Article title here">
+  <td>
+    <table align="left" width="50%" class="articles-imageTable">
+      <tr>
+        <td class="articles-imageBlock">
+          <img class='articles-image' width="480" src="http://lorempixel.com/480/320/people/FITNESS/" alt="Article title here">  
+        </td>
+      </tr>
+    </table>
+    
+    <table align="right" width="50%" class="articles-contentTable">
+      <tr>
+          <td class="articles-content">
+            <h2><a href="#">Fitness Focus: Train for your next 5K</a></h2>
+            <p>Donec et suscipit purus. Aliquam commodo viverra tortor, eu vulputate felis vestibulum in. Vivamus facilisis enim ac leo venenatis, a fermentum augue tempor. Praesent sit amet cursus erat.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>  
+          </td>
+      </tr>
+    </table>
     </td>
-    <td class="articles-content">     
-      <h2><a href="#">Fitness Focus: Train for your next 5K</a></h2>
-      <p>Donec et suscipit purus. Aliquam commodo viverra tortor, eu vulputate felis vestibulum in. Vivamus facilisis enim ac leo venenatis, a fermentum augue tempor. Praesent sit amet cursus erat.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </td>
-  </tr>
-<!--/table>
-<table -->
+    </tr>
+    <tr>
+    <td>
+    
+<table width="50%" align="left" class="articles-imageTable">
   <tr>
-    <td class="articles-image">
-      <img class='articles-img' width="350" src="http://lorempixel.com/350/175/food/RECIPE/" alt="Article title here">
+    <td class="articles-imageBlock">
+      <img class='articles-image' width="480" src="http://lorempixel.com/480/320/food/RECIPE/" alt="Article title here">
     </td>
+    </tr>
+</table>
+<table width="50%" align="right" class="articles-contentTable">
+  <tr>
     <td class="articles-content">     
       <h2><a href="#">In the kitchen: Waldorf Salad</a></h2>
       <p>Mix up a creamy waldorf salad dressing using <a href='#'>PGX Slimstyles</a> and <a href='#'>Whey Protein.</a> Donec et suscipit purus. Aliquam commodo viverra tortor, eu vulputate felis vestibulum in. Vivamus facilisis enim ac leo venenatis, a fermentum augue tempor. Praesent sit amet cursus erat.</p>
     </td>
   </tr>
-<!--/table>
-<table -->
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table class="articles-imageTable" align="left" width="50%">
   <tr>
-    <td class="articles-image">
-      <img class='articles-img' width="350" src="http://lorempixel.com/350/175/people/STORY/" alt="Article title here">
+    <td class="articles-imageBlock">
+      <img class='articles-image' width="480" src="http://lorempixel.com/480/320/people/STORY/" alt="Article title here">
     </td>
+  </tr>
+</table>
+<table class="articles-contentTable" align="right" width="50%" >
+  <tr>
     <td class="articles-content">     
       <h2><a href="#">Success Story: Kim Anderson</a></h2>
       <p>Donec et suscipit purus. Aliquam commodo viverra tortor, eu vulputate felis vestibulum in. Vivamus facilisis enim ac leo venenatis, a fermentum augue tempor. Praesent sit amet cursus erat.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </td>
   </tr>
+  </table>
+  </td>
+  </tr>
 </table>
+
+
+
+    </td>
+  </tr>
+</table>
+
+
 <!-- END OTHER ARTICLES BLOCK -->
 
                         </td>
@@ -322,7 +402,7 @@
                       <tr>
                         <td align="center" valign="top" id="footerContainer">
 <!-- FOOTER BLOCK -->
-  <table width="100%" class="block footer-block">
+  <table width="100%" class="footer-block">
     <tr>
       <td class="footer-social">
         <a href="#" title='Like us on Facebook'>

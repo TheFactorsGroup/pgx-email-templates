@@ -1,4 +1,4 @@
 pgx-email-templates
 ===================
 
-HTML responsive templates for PGX email outs.
+HTML responsive templates for PGX Act-On email program.
